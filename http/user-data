@@ -1,0 +1,27 @@
+#cloud-config
+autoinstall:
+  version: 1
+
+  early-commands:
+    - systemctl stop ssh # kill SSH during install
+
+  locale: en_US
+
+  identity:
+    hostname: ubuntu
+    username: iland
+    password: '$6$1TOedxcG2soywqFq$4EU.nD7E4Ww/w2TLZSZ7zoYWd4n/rxttf6onSuUai94RdBIPJkE0USpmtH/kD6wDAHOkSpRPf2NKf9hxyOD/G.'
+
+  storage:
+    layout:
+      name: lvm
+
+  network:
+    version: 2
+    ethernets:
+      ens192:
+        dhcp4: true
+
+  ssh:
+    install-server: true
+    allow-pw: true
